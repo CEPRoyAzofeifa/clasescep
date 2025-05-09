@@ -188,13 +188,22 @@
         .whatsapp-link i {
             margin-right: 8px;
         }
+        .pdf-button {
+            background: linear-gradient(to bottom, #e74c3c, #c0392b);
+            margin-left: 10px;
+        }
+        .pdf-button:hover {
+            background: linear-gradient(to bottom, #c0392b, #a5281b);
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
     <div class="encabezado">
         <h2>SITIO WEB DISEÑADO PARA OFIMÁTICA EN EL CEP</h2>
-        <p>Práctica de Excel - Secundaria</p>
+        <p>Práctica de Excel - 10mo Grado</p>
     </div>
     
     <div class="instrucciones">
@@ -202,6 +211,7 @@
         <p>1. Utilice los siguientes datos separados para practicar en Excel.</p>
         <p>2. Copie los datos o descargue el archivo CSV para importar a Excel.</p>
         <p>3. Combine los datos según sea necesario para realizar los ejercicios.</p>
+        <button onclick="generarPDF()" class="pdf-button"><i class="fas fa-file-pdf"></i> Descargar PDF con Pasos</button>
     </div>
 
     <div class="contenedor-columnas">
@@ -291,7 +301,7 @@ Isabel Vargas,267,413,592</textarea>
     </div>
     
     <div class="pie-pagina">
-        <p>© 2025 - <strong>Ing. Roy Azofeifa</strong> - Material didáctico para Ofimática</p>
+        <p>© 2023 - <strong>Ing. Roy Azofeifa</strong> - Material didáctico para Ofimática</p>
         <a href="https://wa.me/50688559229" class="whatsapp-link" target="_blank">
             <i class="fab fa-whatsapp"></i> Contacto: +506 8855 9229
         </a>
@@ -299,6 +309,7 @@ Isabel Vargas,267,413,592</textarea>
     </div>
     
     <script>
+        // Función para copiar texto
         function copiarTexto(id) {
             const texto = document.getElementById(id);
             texto.select();
@@ -314,6 +325,7 @@ Isabel Vargas,267,413,592</textarea>
             }, 2000);
         }
         
+        // Función para descargar CSV
         function descargarCSV() {
             const datos = document.getElementById('datos-combinados').value;
             const blob = new Blob([datos], { type: 'text/csv;charset=utf-8;' });
@@ -330,6 +342,107 @@ Isabel Vargas,267,413,592</textarea>
             const boton = document.querySelector('button[onclick="descargarCSV()"]');
             const originalHTML = boton.innerHTML;
             boton.innerHTML = '<i class="fas fa-check"></i> ¡Descargado!';
+            
+            setTimeout(() => {
+                boton.innerHTML = originalHTML;
+            }, 2000);
+        }
+
+        // Función para generar PDF con los pasos
+        function generarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            // Configuración inicial
+            doc.setFontSize(18);
+            doc.setTextColor(40, 53, 147);
+            doc.text('Guía de Ejercicios de Excel - CEP', 105, 20, { align: 'center' });
+            
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            
+            // Agregar contenido
+            let y = 40;
+            
+            doc.setFontSize(14);
+            doc.setTextColor(30, 136, 229);
+            doc.text('1. Obtener los Datos', 20, y);
+            y += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text('- Copiar los datos manualmente o descargar el archivo CSV', 20, y);
+            y += 7;
+            doc.text('- Pegar en Excel organizando en columnas', 20, y);
+            y += 15;
+            
+            doc.setFontSize(14);
+            doc.setTextColor(30, 136, 229);
+            doc.text('2. Operaciones Básicas', 20, y);
+            y += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text('- Suma: =SUMA(B2:D2)', 20, y);
+            y += 7;
+            doc.text('- Promedio: =PROMEDIO(B2:D2)', 20, y);
+            y += 7;
+            doc.text('- Multiplicación: =B2*C2', 20, y);
+            y += 7;
+            doc.text('- División: =REDONDEAR(B2/C2, 2)', 20, y);
+            y += 15;
+            
+            doc.setFontSize(14);
+            doc.setTextColor(30, 136, 229);
+            doc.text('3. Funciones Estadísticas', 20, y);
+            y += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text('- Máximo: =MÁX(B2:B16)', 20, y);
+            y += 7;
+            doc.text('- Mínimo: =MÍN(C2:C16)', 20, y);
+            y += 7;
+            doc.text('- Desviación estándar: =DESVEST.M(B2:B16)', 20, y);
+            y += 15;
+            
+            doc.setFontSize(14);
+            doc.setTextColor(30, 136, 229);
+            doc.text('4. Gráficos', 20, y);
+            y += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text('- Gráfico de barras: Seleccionar nombres y promedios → Insertar → Gráfico de Barras', 20, y);
+            y += 7;
+            doc.text('- Gráfico de dispersión: Seleccionar Número 1 y Número 2 → Insertar → Dispersión (X Y)', 20, y);
+            y += 15;
+            
+            doc.setFontSize(14);
+            doc.setTextColor(30, 136, 229);
+            doc.text('5. Formato Condicional', 20, y);
+            y += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text('- Seleccionar datos → Inicio → Formato Condicional → Mayor que → 400', 20, y);
+            y += 15;
+            
+            doc.setFontSize(14);
+            doc.setTextColor(30, 136, 229);
+            doc.text('6. Ordenar Datos', 20, y);
+            y += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text('- Seleccionar toda la tabla → Datos → Ordenar → Columna "Total" → Descendente', 20, y);
+            
+            // Pie de página
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.text('© 2023 - Ing. Roy Azofeifa - Material didáctico para Ofimática CEP', 105, 290, { align: 'center' });
+            
+            // Guardar PDF
+            doc.save('Guia_Practica_Excel_CEP.pdf');
+            
+            // Feedback visual
+            const boton = document.querySelector('button[onclick="generarPDF()"]');
+            const originalHTML = boton.innerHTML;
+            boton.innerHTML = '<i class="fas fa-check"></i> PDF Generado!';
             
             setTimeout(() => {
                 boton.innerHTML = originalHTML;
