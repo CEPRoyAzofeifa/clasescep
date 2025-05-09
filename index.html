@@ -5,10 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Práctica de Excel - Ofimática CEP</title>
     <style>
-        /* [Todos los estilos anteriores se mantienen igual] */
+        :root {
+            --color-primario: #3498db;
+            --color-secundario: #2ecc71;
+            --color-acento: #e74c3c;
+            --color-fondo: #f9f9f9;
+            --color-texto: #333;
+            --color-borde: #ddd;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+        .encabezado {
+            background: linear-gradient(135deg, var(--color-primario), #2980b9);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .encabezado h2 {
+            margin: 0;
+            font-size: 28px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .encabezado p {
+            margin: 10px 0 0;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        .contenedor-columnas {
+            display: flex;
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .columna {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .columna:hover {
+            transform: translateY(-5px);
+        }
+        .columna h3 {
+            color: var(--color-primario);
+            border-bottom: 2px solid var(--color-secundario);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid var(--color-borde);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background: linear-gradient(to bottom, var(--color-primario), #2980b9);
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        tr:hover {
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            font-family: 'Courier New', monospace;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid var(--color-borde);
+            background-color: #fafafa;
+            resize: none;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: var(--color-primario);
+        }
+        button {
+            background: linear-gradient(to bottom, var(--color-secundario), #27ae60);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-weight: 600;
+        }
+        button:hover {
+            background: linear-gradient(to bottom, #27ae60, #219653);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .botones-excel {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .instrucciones {
+            background: linear-gradient(to right, #e8f4f8, #d4eaf7);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--color-primario);
+        }
+        .instrucciones h2 {
+            color: var(--color-primario);
+            margin-top: 0;
+        }
+        .datos-exportar {
+            background: linear-gradient(to right, #fffde7, #fff9c4);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border-left: 5px solid #fbc02d;
+        }
+        .resultados {
+            background: linear-gradient(to right, #e8f8e8, #d5f5e3);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            border-left: 5px solid var(--color-secundario);
+        }
+        .resultados h2 {
+            color: var(--color-secundario);
+            margin-top: 0;
+        }
+        .pie-pagina {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+        }
+        .pie-pagina a {
+            color: var(--color-secundario);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .pie-pagina a:hover {
+            color: #a5dff9;
+            text-decoration: underline;
+        }
+        .whatsapp-link {
+            display: inline-block;
+            background: #25D366;
+            color: white !important;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin-top: 10px;
+            text-decoration: none !important;
+            transition: all 0.3s;
+        }
+        .whatsapp-link:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+        .whatsapp-link i {
+            margin-right: 8px;
+        }
         .pdf-button {
             background: linear-gradient(to bottom, #e74c3c, #c0392b);
-            margin: 15px 0;
+            margin-left: 10px;
         }
         .pdf-button:hover {
             background: linear-gradient(to bottom, #c0392b, #a5281b);
@@ -16,206 +198,238 @@
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 </head>
 <body>
-    <!-- [Todo el contenido HTML anterior se mantiene igual hasta la sección de instrucciones] -->
+    <div class="encabezado">
+        <h2>SITIO WEB DISEÑADO PARA OFIMÁTICA EN EL CEP</h2>
+        <p>Práctica de Excel - Secundaria </p>
+    </div>
     
     <div class="instrucciones">
         <h2>Instrucciones:</h2>
         <p>1. Utilice los siguientes datos separados para practicar en Excel.</p>
         <p>2. Copie los datos o descargue el archivo CSV para importar a Excel.</p>
         <p>3. Combine los datos según sea necesario para realizar los ejercicios.</p>
-        <button onclick="generarPDF()" class="pdf-button">
-            <i class="fas fa-file-pdf"></i> Descargar Guía Paso a Paso (Para Principiantes)
-        </button>
+        <button onclick="generarPDF()" class="pdf-button"><i class="fas fa-file-pdf"></i> Descargar PDF con Pasos</button>
     </div>
 
-    <!-- [Resto del contenido HTML se mantiene igual] -->
+    <div class="contenedor-columnas">
+        <div class="columna">
+            <h3>Nombres de Estudiantes:</h3>
+            <textarea id="nombres" readonly>
+Ana López
+Luis Martínez
+María González
+Carlos Rodríguez
+Sofía Hernández
+José Pérez
+Elena Sánchez
+Andrés Ramírez
+Laura Díaz
+Pedro Cruz
+Marta Jiménez
+Javier Torres
+Lucía Reyes
+Fernando Ortega
+Isabel Vargas</textarea>
+            <button onclick="copiarTexto('nombres')"><i class="fas fa-copy"></i> Copiar Nombres</button>
+        </div>
+        
+        <div class="columna">
+            <h3>Datos Numéricos:</h3>
+            <textarea id="datos-numericos" readonly>
+123,456,789
+342,278,154
+215,137,368
+389,124,472
+198,302,511
+473,391,622
+234,145,277
+365,289,431
+421,208,397
+147,369,584
+256,412,678
+384,197,523
+312,456,721
+178,324,489
+267,413,592</textarea>
+            <button onclick="copiarTexto('datos-numericos')"><i class="fas fa-copy"></i> Copiar Datos</button>
+        </div>
+    </div>
 
+    <div class="datos-exportar">
+        <h3>Datos Combinados para Excel (CSV):</h3>
+        <textarea id="datos-combinados" readonly>
+Nombre,Número 1,Número 2,Número 3
+Ana López,123,456,789
+Luis Martínez,342,278,154
+María González,215,137,368
+Carlos Rodríguez,389,124,472
+Sofía Hernández,198,302,511
+José Pérez,473,391,622
+Elena Sánchez,234,145,277
+Andrés Ramírez,365,289,431
+Laura Díaz,421,208,397
+Pedro Cruz,147,369,584
+Marta Jiménez,256,412,678
+Javier Torres,384,197,523
+Lucía Reyes,312,456,721
+Fernando Ortega,178,324,489
+Isabel Vargas,267,413,592</textarea>
+        
+        <div class="botones-excel">
+            <button onclick="copiarTexto('datos-combinados')"><i class="fas fa-copy"></i> Copiar Datos Combinados</button>
+            <button onclick="descargarCSV()"><i class="fas fa-file-download"></i> Descargar CSV para Excel</button>
+        </div>
+    </div>
+    
+    <div class="resultados">
+        <h2>Ejercicios Avanzados:</h2>
+        <ol>
+            <li>Combine los nombres con los datos numéricos usando fórmulas de Excel</li>
+            <li>Calcule el promedio de cada estudiante (3 columnas numéricas)</li>
+            <li>Encuentre el valor máximo y mínimo de cada columna numérica</li>
+            <li>Cree una columna "Total" que sume los 3 números de cada estudiante</li>
+            <li>Genere una columna "Estado" que diga "Excelente" si el total > 1500, "Bueno" si > 1000, "Regular" si ≤ 1000</li>
+            <li>Calcule la desviación estándar de cada columna numérica</li>
+            <li>Cree un gráfico de barras comparando los promedios por estudiante</li>
+            <li>Genere un gráfico de dispersión entre Número 1 y Número 2</li>
+            <li>Use formato condicional para resaltar valores mayores a 400</li>
+            <li>Ordene los datos de mayor a menor según el Total</li>
+        </ol>
+    </div>
+    
+    <div class="pie-pagina">
+        <p>© 2025 - <strong>Ing. Roy Azofeifa</strong> - Material didáctico para Ofimática</p>
+        <a href="https://wa.me/50688559229" class="whatsapp-link" target="_blank">
+            <i class="fab fa-whatsapp"></i> Contacto: +506 8855 9229
+        </a>
+        <p style="margin-top: 15px; font-size: 14px; opacity: 0.8;">Este material es para uso educativo exclusivo del CEP</p>
+    </div>
+    
     <script>
-        // [Funciones copiarTexto() y descargarCSV() se mantienen igual]
+        // Función para copiar texto
+        function copiarTexto(id) {
+            const texto = document.getElementById(id);
+            texto.select();
+            document.execCommand('copy');
+            
+            // Cambiar temporalmente el texto del botón
+            const boton = document.querySelector(`button[onclick="copiarTexto('${id}')"]`);
+            const originalHTML = boton.innerHTML;
+            boton.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+            
+            setTimeout(() => {
+                boton.innerHTML = originalHTML;
+            }, 2000);
+        }
+        
+        // Función para descargar CSV
+        function descargarCSV() {
+            const datos = document.getElementById('datos-combinados').value;
+            const blob = new Blob([datos], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', 'datos_completos_cep.csv');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            // Mostrar feedback al usuario
+            const boton = document.querySelector('button[onclick="descargarCSV()"]');
+            const originalHTML = boton.innerHTML;
+            boton.innerHTML = '<i class="fas fa-check"></i> ¡Descargado!';
+            
+            setTimeout(() => {
+                boton.innerHTML = originalHTML;
+            }, 2000);
+        }
 
+        // Función para generar PDF con los pasos
         function generarPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
             
             // Configuración inicial
-            doc.setFont("helvetica", "normal");
-            doc.setFontSize(16);
+            doc.setFontSize(18);
             doc.setTextColor(40, 53, 147);
-            doc.text('Guía Paso a Paso para Principiantes', 105, 20, { align: 'center' });
+            doc.text('Guía de Ejercicios de Excel - CEP', 105, 20, { align: 'center' });
             
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('Práctica de Excel - Ofimática CEP', 105, 30, { align: 'center' });
             
             // Agregar contenido
-            let y = 45;
+            let y = 40;
             
-            // 1. Combinar nombres con datos
             doc.setFontSize(14);
             doc.setTextColor(30, 136, 229);
-            doc.text('1. Combinar nombres con datos numéricos', 20, y);
-            y += 8;
+            doc.text('1. Obtener los Datos', 20, y);
+            y += 10;
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('- Si los datos están separados:', 20, y);
+            doc.text('- Copiar los datos manualmente o descargar el archivo CSV', 20, y);
             y += 7;
-            doc.text('  a) Copia los nombres de la columna A', 25, y);
-            y += 7;
-            doc.text('  b) Pega en una nueva hoja de Excel (columna A)', 25, y);
-            y += 7;
-            doc.text('  c) Copia los datos numéricos (3 columnas)', 25, y);
-            y += 7;
-            doc.text('  d) Pega junto a los nombres (columnas B, C, D)', 25, y);
+            doc.text('- Pegar en Excel organizando en columnas', 20, y);
             y += 15;
             
-            // 2. Calcular promedio
             doc.setFontSize(14);
             doc.setTextColor(30, 136, 229);
-            doc.text('2. Calcular promedio por estudiante', 20, y);
-            y += 8;
+            doc.text('2. Operaciones Básicas', 20, y);
+            y += 10;
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('- En la columna E (junto a los datos), escribe:', 20, y);
+            doc.text('- Suma: =SUMA(B2:D2)', 20, y);
             y += 7;
-            doc.setTextColor(200, 0, 0);
-            doc.text('  =PROMEDIO(B2:D2)', 25, y);
+            doc.text('- Promedio: =PROMEDIO(B2:D2)', 20, y);
             y += 7;
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Haz clic en la esquina inferior derecha de la celda y arrastra hacia abajo', 20, y);
+            doc.text('- Multiplicación: =B2*C2', 20, y);
+            y += 7;
+            doc.text('- División: =REDONDEAR(B2/C2, 2)', 20, y);
             y += 15;
             
-            // 3. Máximo y mínimo
             doc.setFontSize(14);
             doc.setTextColor(30, 136, 229);
-            doc.text('3. Encontrar máximo y mínimo', 20, y);
-            y += 8;
+            doc.text('3. Funciones Estadísticas', 20, y);
+            y += 10;
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('- Debajo de los datos (ej. celda B17), escribe:', 20, y);
+            doc.text('- Máximo: =MÁX(B2:B16)', 20, y);
             y += 7;
-            doc.setTextColor(200, 0, 0);
-            doc.text('  =MÁX(B2:B16)  → Para el valor más alto', 25, y);
+            doc.text('- Mínimo: =MÍN(C2:C16)', 20, y);
             y += 7;
-            doc.text('  =MÍN(B2:B16)  → Para el valor más bajo', 25, y);
-            y += 7;
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Repite para las columnas C y D', 20, y);
+            doc.text('- Desviación estándar: =DESVEST.M(B2:B16)', 20, y);
             y += 15;
             
-            // 4. Columna Total
             doc.setFontSize(14);
             doc.setTextColor(30, 136, 229);
-            doc.text('4. Crear columna "Total"', 20, y);
-            y += 8;
+            doc.text('4. Gráficos', 20, y);
+            y += 10;
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('- En la columna F, escribe:', 20, y);
+            doc.text('- Gráfico de barras: Seleccionar nombres y promedios → Insertar → Gráfico de Barras', 20, y);
             y += 7;
-            doc.setTextColor(200, 0, 0);
-            doc.text('  =SUMA(B2:D2)', 25, y);
-            y += 7;
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Arrastra la fórmula hacia abajo', 20, y);
+            doc.text('- Gráfico de dispersión: Seleccionar Número 1 y Número 2 → Insertar → Dispersión (X Y)', 20, y);
             y += 15;
             
-            // 5. Columna Estado
             doc.setFontSize(14);
             doc.setTextColor(30, 136, 229);
-            doc.text('5. Columna "Estado"', 20, y);
-            y += 8;
+            doc.text('5. Formato Condicional', 20, y);
+            y += 10;
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('- En la columna G, escribe:', 20, y);
-            y += 7;
-            doc.setTextColor(200, 0, 0);
-            doc.text('  =SI(F2>1500,"Excelente",SI(F2>1000,"Bueno","Regular"))', 25, y);
-            y += 7;
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Explicación:', 20, y);
-            y += 7;
-            doc.text('  Si Total > 1500 → "Excelente"', 25, y);
-            y += 7;
-            doc.text('  Si Total > 1000 → "Bueno"', 25, y);
-            y += 7;
-            doc.text('  Si Total ≤ 1000 → "Regular"', 25, y);
+            doc.text('- Seleccionar datos → Inicio → Formato Condicional → Mayor que → 400', 20, y);
             y += 15;
             
-            // 6. Desviación estándar
             doc.setFontSize(14);
             doc.setTextColor(30, 136, 229);
-            doc.text('6. Desviación estándar', 20, y);
-            y += 8;
+            doc.text('6. Ordenar Datos', 20, y);
+            y += 10;
             doc.setFontSize(12);
             doc.setTextColor(0, 0, 0);
-            doc.text('- Debajo de los datos (ej. celda B19), escribe:', 20, y);
-            y += 7;
-            doc.setTextColor(200, 0, 0);
-            doc.text('  =DESVEST.M(B2:B16)', 25, y);
-            y += 7;
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Esto muestra qué tan dispersos están los datos', 20, y);
-            y += 15;
-            
-            // 7. Gráfico de barras
-            doc.setFontSize(14);
-            doc.setTextColor(30, 136, 229);
-            doc.text('7. Gráfico de barras (Promedios)', 20, y);
-            y += 8;
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Selecciona los nombres (A2:A16) y los promedios (E2:E16)', 20, y);
-            y += 7;
-            doc.text('- Ve a la pestaña "Insertar"', 20, y);
-            y += 7;
-            doc.text('- Haz clic en "Gráfico de barras"', 20, y);
-            y += 7;
-            doc.text('- Elige el primer estilo de gráfico', 20, y);
-            y += 15;
-            
-            // 8. Gráfico de dispersión
-            doc.setFontSize(14);
-            doc.setTextColor(30, 136, 229);
-            doc.text('8. Gráfico de dispersión', 20, y);
-            y += 8;
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Selecciona Número 1 (B2:B16) y Número 2 (C2:C16)', 20, y);
-            y += 7;
-            doc.text('- Ve a "Insertar" → "Gráficos" → "Dispersión"', 20, y);
-            y += 7;
-            doc.text('- Elige el primer gráfico de puntos (X Y)', 20, y);
-            y += 15;
-            
-            // 9. Formato condicional
-            doc.setFontSize(14);
-            doc.setTextColor(30, 136, 229);
-            doc.text('9. Resaltar valores > 400', 20, y);
-            y += 8;
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Selecciona los datos numéricos (B2:D16)', 20, y);
-            y += 7;
-            doc.text('- Ve a "Inicio" → "Formato condicional"', 20, y);
-            y += 7;
-            doc.text('- Elige "Mayor que" y escribe 400', 20, y);
-            y += 7;
-            doc.text('- Selecciona un color de resaltado', 20, y);
-            y += 15;
-            
-            // 10. Ordenar datos
-            doc.setFontSize(14);
-            doc.setTextColor(30, 136, 229);
-            doc.text('10. Ordenar por Total', 20, y);
-            y += 8;
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text('- Selecciona TODOS los datos (A1:G16)', 20, y);
-            y += 7;
-            doc.text('- Ve a "Datos" → "Ordenar"', 20, y);
-            y += 7;
-            doc.text('- Ordena por columna "Total" → "De mayor a menor"', 20, y);
+            doc.text('- Seleccionar toda la tabla → Datos → Ordenar → Columna "Total" → Descendente', 20, y);
             
             // Pie de página
             doc.setFontSize(10);
@@ -223,7 +437,7 @@
             doc.text('© 2023 - Ing. Roy Azofeifa - Material didáctico para Ofimática CEP', 105, 290, { align: 'center' });
             
             // Guardar PDF
-            doc.save('Guia_Excel_Para_Principiantes_CEP.pdf');
+            doc.save('Guia_Practica_Excel_CEP.pdf');
             
             // Feedback visual
             const boton = document.querySelector('button[onclick="generarPDF()"]');
