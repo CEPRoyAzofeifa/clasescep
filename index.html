@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APOYOS EDUCATIVOS 2025 - INFORME SEMESTRAL</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <div class="document-container" id="documentContainer">
+      <header class="document-header">
+        <img
+          src="encabezado.png"
+          alt="Encabezado Apoyos Educativos"
+          class="header-image"
+        />
+        <div class="header-text-section">
+          <h1>INFORME SEMESTRAL <span class="year">2025</span></h1>
+          <div class="semester-selector">
+            <span class="period-label">PERÍODO:</span>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="semester" value="I" /> I
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="semester" value="II" checked /> II
+              </label>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <div class="student-info-grid">
+          <div class="info-field">
+            <label>Asignatura:</label>
+            <input type="text" class="elegant-input" value="Español" />
+          </div>
+          <div class="info-field">
+            <label>Docente:</label>
+            <input type="text" class="elegant-input" />
+          </div>
+          <div class="info-field">
+            <label>Nivel:</label>
+            <input type="text" class="elegant-input" />
+          </div>
+          <div class="info-field">
+            <label>Nombre del estudiante:</label>
+            <input type="text" class="elegant-input" />
+          </div>
+          <div class="info-field">
+            <label>Fecha:</label>
+            <input type="date" class="elegant-input" />
+          </div>
+        </div>
+
+        <div class="access-section">
+          <h3 class="section-subtitle">ACCESO:</h3>
+          <div class="access-grid">
+            <div class="access-row">
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="visual"
+                />
+                <span class="checkmark"></span>
+                VISUAL
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="auditivo"
+                />
+                <span class="checkmark"></span>
+                AUDITIVO
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="verbal"
+                />
+                <span class="checkmark"></span>
+                VERBAL
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="motricidadFina"
+                />
+                <span class="checkmark"></span>
+                MOTRICIDAD FINA
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="motricidadGruesa"
+                />
+                <span class="checkmark"></span>
+                MOTRICIDAD GRUESA
+              </label>
+            </div>
+
+            <div class="access-row">
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="noSignificativa"
+                />
+                <span class="checkmark"></span>
+                NO SIGNIFICATIVA
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="problemasAprendizaje"
+                />
+                <span class="checkmark"></span>
+                PROBLEMAS DE APRENDIZAJE
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="deficitAtencional"
+                />
+                <span class="checkmark"></span>
+                DÉFICIT ATENCIONAL
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="problemasEmocionales"
+                />
+                <span class="checkmark"></span>
+                PROBLEMAS EMOCIONALES
+              </label>
+            </div>
+
+            <div class="access-row indent-row">
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="problemasDesarrollo"
+                />
+                <span class="checkmark"></span>
+                PROBLEMAS DEL DESARROLLO
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="problemasLenguaje"
+                />
+                <span class="checkmark"></span>
+                PROBLEMAS DE LENGUAJE
+              </label>
+              <label class="elegant-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="acceso"
+                  data-label="altoDesempeno"
+                />
+                <span class="checkmark"></span>
+                ALTO DESEMPEÑO
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="grades-section">
+          <h2 class="section-title">Evaluación de Componentes</h2>
+          <table class="elegant-table compact-table">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Trabajo Cotidiano</th>
+                <th>Tareas Cortas</th>
+                <th>Pruebas</th>
+                <th>Proyecto</th>
+                <th>Asistencia</th>
+                <th>Nota Final</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Porcentaje Obtenido</td>
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    class="percentage-input"
+                    data-grade="trabajoCotidiano"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    class="percentage-input"
+                    data-grade="tareasCortas"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    class="percentage-input"
+                    data-grade="pruebas"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    class="percentage-input"
+                    data-grade="proyecto"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    class="percentage-input"
+                    data-grade="asistencia"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    class="percentage-input"
+                    data-grade="notaFinal"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="vertical-evaluation">
+          <div class="evaluation-category vertical-category">
+            <h3 class="category-title">Trabajo Cotidiano</h3>
+            <div class="checkbox-list compact-list">
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Ubicar al estudiante cerca de la pizarra o del docente.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Trabajos en grupo.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Tiempo adicional.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Uso de material concreto.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Uso de fichas.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Entregar material fotocopiado cuando se requiera.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Ampliación de la Letra
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="trabajoCotidiano-otros"
+                  data-label="Ampliación de la Letra"
+                />
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Revisión constante de su trabajo diario o desempeño.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Motivación constante para elevar su autoestima.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Nombrar tutor.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Brindarle una indicación a la vez.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Explicación individual del trabajo cotidiano.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="trabajoCotidiano" />
+                <span class="checkmark"></span>
+                Hablar despacio, claro y frente al estudiante para la lectura
+                labial.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="trabajoCotidiano"
+                  data-label="Otros"
+                />
+                <span class="checkmark"></span>
+                Otros:
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="trabajoCotidiano-otros-text"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="evaluation-category vertical-category">
+            <h3 class="category-title">Tareas</h3>
+            <div class="checkbox-list compact-list">
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="tareas" />
+                <span class="checkmark"></span>
+                Se le entrega el trabajo en fotocopias.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="tareas" />
+                <span class="checkmark"></span>
+                Se amplía la letra.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="tareas" />
+                <span class="checkmark"></span>
+                Trabajo en forma grupal para facilitar su elaboración.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="tareas" />
+                <span class="checkmark"></span>
+                Explicación detallada de las instrucciones.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="tareas"
+                  data-label="Otros"
+                />
+                <span class="checkmark"></span>
+                Otras:
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="tareas-otros-text"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="evaluation-category vertical-category">
+            <h3 class="category-title">Pruebas</h3>
+            <div class="checkbox-list compact-list">
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Efectuar una práctica para prueba y se revisa en el aula para
+                aclarar dudas.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Tiempo adicional.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Prueba específica.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Recinto aparte.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Se dejan trabajos adicionales formativos, referente a la prueba.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Asignarle un tutor para orientarlo(a) en las prácticas.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Orientarlo(a) durante la ejecución de la prueba.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Asegurarse que el estudiante completó la prueba.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Permitir el uso de calculadora.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Ampliación de letra
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="pruebas-otros"
+                  data-label="Ampliación de letra"
+                />
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="pruebas" />
+                <span class="checkmark"></span>
+                Explicación detallada de las indicaciones.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="pruebas"
+                  data-label="Otros"
+                />
+                <span class="checkmark"></span>
+                Otros:
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="pruebas-otros-text"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="evaluation-category vertical-category">
+            <h3 class="category-title">Logros</h3>
+            <div class="checkbox-list compact-list">
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                Participa en clases y presta atención.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                Es responsable.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                No falta a clases.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                Es más seguro, se relaciona mejor con los demás.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                Es ordenado.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                Completa sus prácticas y apuntes.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                Se esfuerza por superarse.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="logros" />
+                <span class="checkmark"></span>
+                Logró que sus calificaciones fueran aceptables. (Mínimo 65).
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="logros"
+                  data-label="Otros"
+                />
+                <span class="checkmark"></span>
+                Otros:
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="logros-otros-text"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="evaluation-category vertical-category">
+            <h3 class="category-title">Debilidades</h3>
+            <div class="checkbox-list compact-list">
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                Se distrae fácilmente.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                No trabaja en clase.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                Habla mucho.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                No participa en clase.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                No muestra interés en la asignatura.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                Constantemente se muestra con pereza y desmotivación.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                Llega tarde.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                Ausentismo.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                Registra inasistencia o escape de las lecciones.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="debilidades" />
+                <span class="checkmark"></span>
+                Bajo rendimiento en las pruebas.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="debilidades"
+                  data-label="Otros"
+                />
+                <span class="checkmark"></span>
+                Otros:
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="debilidades-otros-text"
+                />
+              </label>
+            </div>
+          </div>
+
+          <div class="evaluation-category vertical-category">
+            <h3 class="category-title">Recomendaciones</h3>
+            <div class="checkbox-list compact-list">
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Los padres o encargados deben visitar la institución para mayor
+                atención al estudiante.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Debe repasar la materia constantemente.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Asistir puntualmente a clases.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Solicitar ayuda en la clase cuando así lo requiera.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Elaborar un horario de estudio y cumplirlo.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Seguir las instrucciones del profesor(a).
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Cumplir con las tareas cortas, proyectos, presentación de
+                materiales de trabajo y otros asignados.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input type="checkbox" data-category="recomendaciones" />
+                <span class="checkmark"></span>
+                Trabajar en forma adecuada en clase.
+              </label>
+              <label class="elegant-checkbox compact-checkbox">
+                <input
+                  type="checkbox"
+                  data-category="recomendaciones"
+                  data-label="Otros"
+                />
+                <span class="checkmark"></span>
+                Otros:
+                <input
+                  type="text"
+                  class="inline-input compact-input"
+                  data-category="recomendaciones-otros-text"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons no-print">
+        <button id="printBtn" class="elegant-button print-button">
+          <i class="icon">🖨️</i> Imprimir/Exportar PDF
+        </button>
+        <button id="saveBtn" class="elegant-button save-button">
+          <i class="icon">💾</i> Guardar Datos
+        </button>
+        <button id="loadBtn" class="elegant-button load-button">
+          <i class="icon">📂</i> Cargar Datos
+        </button>
+        <button id="resetBtn" class="elegant-button reset-button">
+          <i class="icon">🔄</i> Reiniciar Formulario
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
