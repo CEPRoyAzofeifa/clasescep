@@ -1,0 +1,534 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* Estilos Generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6; /* Un gris muy claro para el fondo */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.document-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden; /* Asegura que la imagen de encabezado no se desborde */
+}
+
+/* Encabezado */
+.document-header {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px; /* Espacio debajo de la imagen */
+}
+
+.header-text-section {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px; /* Ajusta este valor si necesitas más espacio entre la imagen y el texto */
+    padding-bottom: 10px;
+    position: relative; /* Asegura que el z-index funcione si hay superposición */
+    z-index: 1; /* Asegura que el texto esté sobre cualquier otra cosa si hay un solapamiento */
+}
+
+.document-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    color: #2c3e50; /* Azul oscuro elegante */
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.document-header .year {
+    color: #e67e22; /* Naranja vibrante para el año */
+}
+
+.semester-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #555;
+}
+
+.period-label {
+    font-weight: 700;
+    color: #34495e;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-option .checkmark {
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    border: 2px solid #ccc;
+    transition: all 0.2s ease-in-out;
+}
+
+.radio-option input[type="radio"]:checked ~ .checkmark {
+    background-color: #3498db; /* Azul claro */
+    border-color: #3498db;
+}
+
+.radio-option input[type="radio"]:checked ~ .checkmark:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Secciones de Contenido */
+.main-content {
+    margin-top: 30px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8em;
+    color: #2c3e50;
+    border-bottom: 2px solid #e67e22; /* Línea de color debajo del título */
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4em;
+    color: #34495e;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Grid de Información del Estudiante */
+.student-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #f8fbfd;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.info-field label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.elegant-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.elegant-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Sección de Acceso (Checkbox Grid) */
+.access-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f8fbfd;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.access-grid {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para apilar las filas */
+    gap: 15px; /* Espacio entre las filas */
+}
+
+.access-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px; /* Espacio entre los checkboxes dentro de una fila */
+}
+
+.access-row.indent-row {
+    margin-left: 0px; /* Sin sangría para mantener la simetría */
+}
+
+/* Tabla de Calificaciones */
+.elegant-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; /* Asegura que los bordes redondeados se apliquen a la tabla */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+
+.elegant-table th,
+.elegant-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.elegant-table thead th {
+    background-color: #3498db; /* Azul para el encabezado de la tabla */
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.elegant-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.elegant-table tbody tr:hover {
+    background-color: #f0f8ff; /* Azul muy claro al pasar el ratón */
+}
+
+.percentage-input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.percentage-input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Listas de Checkbox Verticales */
+.vertical-evaluation {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 columnas */
+    gap: 30px;
+}
+
+.evaluation-category {
+    background-color: #f8fbfd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+.category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.elegant-checkbox {
+    display: flex;
+    align-items: flex-start; /* Alinea el texto con la parte superior del checkbox */
+    cursor: pointer;
+    font-size: 0.95em;
+    color: #444;
+    position: relative;
+    padding-left: 28px; /* Espacio para el custom checkbox */
+}
+
+.elegant-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.elegant-checkbox .checkmark {
+    position: absolute;
+    top: 2px; /* Alinea el checkbox con la primera línea de texto */
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.elegant-checkbox:hover input ~ .checkmark {
+    background-color: #ddd;
+}
+
+.elegant-checkbox input:checked ~ .checkmark {
+    background-color: #2ecc71; /* Verde para los seleccionados */
+    border-color: #2ecc71;
+}
+
+.elegant-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.elegant-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.inline-input {
+    flex-grow: 1; /* Permite que el input ocupe el espacio restante */
+    margin-left: 8px;
+    padding: 5px 8px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+}
+
+.compact-list .elegant-checkbox,
+.compact-list .inline-input {
+    margin-bottom: 5px; /* Espacio más pequeño en listas compactas */
+}
+
+/* Botones de Acción */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.elegant-button {
+    background-color: #3498db; /* Azul principal */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.elegant-button:hover {
+    background-color: #2980b9; /* Azul más oscuro al pasar el ratón */
+    transform: translateY(-2px);
+}
+
+.elegant-button:active {
+    transform: translateY(0);
+}
+
+.print-button { background-color: #2ecc71; } /* Verde para imprimir */
+.print-button:hover { background-color: #27ae60; }
+
+.save-button { background-color: #f39c12; } /* Naranja para guardar */
+.save-button:hover { background-color: #e67e22; }
+
+.load-button { background-color: #9b59b6; } /* Morado para cargar */
+.load-button:hover { background-color: #8e44ad; }
+
+.reset-button { background-color: #e74c3c; } /* Rojo para reiniciar */
+.reset-button:hover { background-color: #c0392b; }
+
+.icon {
+    font-size: 1.2em;
+}
+
+/* Estilos de impresión para ocultar botones y ajustar el layout */
+@media print {
+    body {
+        background-color: #fff;
+        padding: 0;
+        margin: 0;
+    }
+    .document-container {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 20px;
+        width: 100%;
+        max-width: none;
+    }
+    .no-print {
+        display: none !important;
+    }
+
+    .document-header {
+        position: relative;
+        text-align: center;
+        margin-bottom: 10px; /* Reduce el margen para impresión */
+    }
+
+    .header-image {
+        width: 100%;
+        max-width: 750px; /* Ajusta el tamaño máximo de la imagen en la impresión */
+        height: auto;
+        display: block;
+        margin: 0 auto 10px auto; /* Centra la imagen y añade un pequeño margen inferior */
+        box-shadow: none; /* Elimina la sombra para impresión */
+        border-radius: 0; /* Elimina el borde redondeado */
+    }
+
+    .header-text-section {
+        position: static; /* Restaura la posición estática para que el texto fluya normalmente */
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 15px; /* Espacio entre la imagen y el texto en la impresión */
+        z-index: auto;
+    }
+
+    /* Ocultar los inputs de texto y checkboxes en la impresión */
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="radio"],
+    .elegant-checkbox input[type="checkbox"] + .checkmark {
+        -webkit-print-color-adjust: exact; /* Para que los navegadores basados en WebKit impriman el color de fondo */
+        print-color-adjust: exact;
+        background-color: transparent !important; /* Quita el fondo de los inputs */
+        border-color: #999 !important; /* Borde más suave */
+    }
+
+    .elegant-checkbox input:checked ~ .checkmark {
+        background-color: #2ecc71 !important; /* Fuerza el color verde del checkmark */
+        border-color: #2ecc71 !important;
+    }
+
+    .elegant-checkbox .checkmark:after {
+        border-color: white !important; /* Fuerza el color blanco del check */
+    }
+
+    .elegant-input, .percentage-input, .inline-input {
+        border: none !important;
+        border-bottom: 1px dashed #ccc !important; /* Subrayado para los campos de texto */
+        padding: 0;
+        border-radius: 0;
+        background-color: transparent !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .info-field label, .section-subtitle, .category-title, .elegant-checkbox {
+        color: #000 !important; /* Asegura que el texto sea negro */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .elegant-table th {
+        background-color: #3498db !important;
+        color: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .elegant-table tbody tr:nth-child(even) {
+        background-color: #f0f0f0 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .elegant-table td {
+        background-color: #ffffff !important; /* Fuerza el blanco para el fondo de las celdas */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Asegurar que los radio buttons se vean en la impresión */
+    .radio-option input[type="radio"] {
+        opacity: 1; /* Hace visibles los radio buttons */
+        position: static; /* Devuelve a su posición normal */
+        margin-right: 5px; /* Pequeño margen para separación */
+    }
+
+    /* Ocultar el custom checkmark para radio buttons en la impresión si no se desea */
+    .radio-option .checkmark {
+        display: none;
+    }
+}
